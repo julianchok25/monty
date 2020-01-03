@@ -33,5 +33,21 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_variables - all global variables to initialize
+ * @fd: File wil be open
+ * @cline: Counter of lines into file
+ * @buffer: this pointer allocate the data of each line of the file
+ * @stack: Reference to the stack will be added
+ *
+ * Description: keeps all variables expecting for a value
+ */
+typedef struct global_variables
+{
+	File *fd;
+	int cline;
+	char *buffer;
+	int stack;
+} global_t;
 void (*get_opcode_func(char *s))(stack_t **stack, unsigned int line_number);
 #endif /* #ifndef MONTY_H */
