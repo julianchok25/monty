@@ -19,9 +19,15 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 		exit(EXIT_FAILURE);
 	}
 	new->n = n;
-	if (*head != NULL)
-		(*head)->prev = new;
-	new->next = *head;
+	if (*head == NULL)
+	{
+		new->next = *head;
+		new->prev = NULL;
+		*head = new;
+		return (*head);
+	}
+	(*head)->prev = new;
+	new->next = (*head);
 	new->prev = NULL;
 	*head = new;
 	return (*head);

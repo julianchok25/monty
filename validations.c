@@ -12,6 +12,7 @@ void init(FILE *fd)
 	vars.cline = 1;
 	vars.buffer = NULL;
 	vars.stack = NULL;
+	vars.head = NULL;
 }
 /**
  * check_open - validate if the argument represent a file or not
