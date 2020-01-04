@@ -16,6 +16,7 @@ void (*get_opcode_func(char *s))(stack_t **head, unsigned int line_num)
 		{"pop", stack_pop},
 		{"add", stack_add},
 		{"nop", stack_nop},
+		{"sub", stack_sub},
 		{"queue", stack_queue},
 		{"stack", order_stack},
 		{NULL, NULL}
