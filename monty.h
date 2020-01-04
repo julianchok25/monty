@@ -72,6 +72,7 @@ void stack_swap(stack_t **head, unsigned int line_num);
 void stack_nop(stack_t **head, unsigned int line_num);
 void stack_sub(stack_t **head, unsigned int line_num);
 void stack_div(stack_t **head, unsigned int line_num);
+void stack_mul(stack_t **head, unsigned int line_num);
 void stack_queue(stack_t **head, unsigned int line_num);
 void order_stack(stack_t **head, unsigned int line_num);
 FILE *check_open(int argc, char **argv);
