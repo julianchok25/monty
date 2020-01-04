@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <string.h>
 /**
  * get_opcode_func - get the option of char input to perform the opcode
  * @s: input opcode
@@ -25,7 +24,7 @@ void (*get_opcode_func(char *s))(stack_t **head, unsigned int line_num)
 
 	while (stack[i].opcode)
 	{
-		if (strcmp(stack[i].opcode, s) == 0)
+		if (_strcmp(stack[i].opcode, s) == 0)
 			break;
 		i += 1;
 	}

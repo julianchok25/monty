@@ -75,5 +75,7 @@ void stack_div(stack_t **head, unsigned int line_num);
 void stack_queue(stack_t **head, unsigned int line_num);
 void order_stack(stack_t **head, unsigned int line_num);
 FILE *check_open(int argc, char **argv);
+char *_strtok(char *str, char *tokens);
+int _strcmp(char *s1, char *s2);
 void init(FILE *fd);
 #endif /* #ifndef MONTY_H */
