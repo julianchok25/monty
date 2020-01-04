@@ -10,9 +10,15 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	stack_t *new;
 	stack_t *tmp = *head;
 
+	if (head == NULL)
+		return (NULL);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		return (NULL);
+	{
+		dprintf(2, "Error: malloc failed\n");
+		free_vars();
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	new->prev = NULL;
 	new->next = *head;
@@ -33,9 +39,15 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	stack_t *tmp = *head;
 	stack_t *new;
 
+	if (head == NULL)
+		return (NULL);
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		return (NULL);
+	{
+		dprintf(2, "Error: malloc failed\n");
+		free_vars();
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	new->next = NULL;
 	if (*head == NULL)
@@ -48,7 +60,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 		tmp = tmp->next;
 	new->prev = tmp;
 	tmp->next = new;
-	return (new);
+	return (tmp->next);
 }
 /**
  * free_stack - free a doubly linked list
