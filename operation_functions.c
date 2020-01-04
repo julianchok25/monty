@@ -61,3 +61,28 @@ void stack_sub(stack_t **head, unsigned int line_num)
 	tmp->n -= (*head)->n;
 	stack_pop(head, line_num);
 }
+/**
+ * stack_queue - sets the format of the data to a FIFO stack
+ * @head: Reference to the head of doubly linked list
+ * @line_num: Reference to the line we are checking in case of an error
+ */
+void stack_queue(stack_t **head, unsigned int line_num)
+{
+	(void)head;
+	(void)line_num;
+
+	vars.order = 0;
+}
+
+/**
+ * order_stack - sets the format fo the data to a LIFO stack
+ * @head: Reference to the head of doubly linked list
+ * @line_num: Reference to the line we are checking in case of an error
+ */
+void order_stack(stack_t **head, unsigned int line_num)
+{
+	(void)head;
+	(void)line_num;
+
+	vars.order = 1;
+}

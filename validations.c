@@ -7,6 +7,7 @@
  */
 void init(FILE *fd)
 {
+	vars.order = 1;
 	vars.fd = fd;
 	vars.cline = 1;
 	vars.buffer = NULL;
