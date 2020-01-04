@@ -7,6 +7,7 @@
  */
 void init(FILE *fd)
 {
+	vars.order = 1;
 	vars.fd = fd;
 	vars.cline = 1;
 	vars.buffer = NULL;
@@ -30,7 +31,7 @@ FILE *check_open(int argc, char **argv)
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	return (fd);

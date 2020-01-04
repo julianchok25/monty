@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * stack_push - this function add a new node into doubly linked list
  * @head: Reference to the head of doubly linked list
@@ -30,8 +29,10 @@ void stack_push(stack_t **head, unsigned int line_num)
 		i++;
 	}
 	number = atoi(vars.stack);
-
-	add_dnodeint(head, number);
+	if (vars.order == 1)
+		add_dnodeint(head, number);
+	else
+		add_dnodeint_end(head, number);
 }
 
 /**

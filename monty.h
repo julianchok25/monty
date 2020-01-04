@@ -1,10 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <stddef.h>
+#include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,6 +39,7 @@ typedef struct instruction_s
 
 /**
  * struct global_variables - all global variables to initialize
+ * @order: Stablish the order of the stack, when is a queue or stack
  * @fd: File wil be open
  * @cline: Counter of lines into file
  * @buffer: this pointer allocate the data of each line of the file
@@ -47,6 +49,7 @@ typedef struct instruction_s
  */
 typedef struct global_variables
 {
+	int order;
 	FILE *fd;
 	unsigned int cline;
 	char *buffer;
@@ -67,6 +70,8 @@ void stack_pop(stack_t **head, unsigned int line_num);
 void stack_add(stack_t **head, unsigned int line_num);
 void stack_swap(stack_t **head, unsigned int line_num);
 void stack_nop(stack_t **head, unsigned int line_num);
+void stack_queue(stack_t **head, unsigned int line_num);
+void order_stack(stack_t **head, unsigned int line_num);
 FILE *check_open(int argc, char **argv);
 void init(FILE *fd);
 #endif /* #ifndef MONTY_H */
