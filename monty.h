@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,7 +38,6 @@ typedef struct instruction_s
 
 /**
  * struct global_variables - all global variables to initialize
- * @order: Keeps the order of stack
  * @fd: File wil be open
  * @cline: Counter of lines into file
  * @buffer: this pointer allocate the data of each line of the file
@@ -47,13 +47,26 @@ typedef struct instruction_s
  */
 typedef struct global_variables
 {
-	int order;
-	File *fd;
+	FILE *fd;
 	unsigned int cline;
 	char *buffer;
 	char *stack;
 	stack_t *head;
 } global_t;
-void (*get_opcode_func(char *s))(stack_t, unsigned int);
+
+extern global_t vars;
+void (*get_opcode_func(char *s))(stack_t **head, unsigned int line_number);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+void free_vars();
 void free_stack(stack_t *head);
+void stack_push(stack_t **head, unsigned int line_num);
+void stack_pall(stack_t **head, unsigned int line_num);
+void stack_pint(stack_t **head, unsigned int line_num);
+void stack_pop(stack_t **head, unsigned int line_num);
+void stack_add(stack_t **head, unsigned int line_num);
+void stack_swap(stack_t **head, unsigned int line_num);
+void stack_nop(stack_t **head, unsigned int line_num);
+FILE *check_open(int argc, char **argv);
+void init(FILE *fd);
 #endif /* #ifndef MONTY_H */

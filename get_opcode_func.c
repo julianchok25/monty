@@ -1,24 +1,28 @@
 #include "monty.h"
-
 /**
  * get_opcode_func - get the option of char input to perform the opcode
  * @s: input opcode
  * Return: a pointer to the function given the opcode or NULL if not found
  */
-void (*get_opcode_func(char *s))(stack_t, unsigned int)
+void (*get_opcode_func(char *s))(stack_t **head, unsigned int line_num)
 {
 	int i = 0;
 	instruction_t stack[] = {
 		{"push", stack_push},
 		{"pall", stack_pall},
+		{"pint", stack_pint},
+		{"swap", stack_swap},
+		{"pop", stack_pop},
+		{"add", stack_add},
+		{"nop", stack_nop},
 		{NULL, NULL}
 	};
 
-	while (stack[i].opcode != '\0')
+	while (stack[i].opcode)
 	{
-		if (*s == *(stack[i]).opcode)
-			return (*(stack[i]).f);
+		if (strcmp(stack[i].opcode, s) == 0)
+			break;
 		i += 1;
 	}
-	return (NULL);
+	return (stack[i].f);
 }

@@ -1,30 +1,5 @@
 #include "monty.h"
-
-static global_t vars;
-
-/**
- * free_vars - frees all variables into the struct global_t
- * Return: Doesn't return
- */
-free_vars()
-{
-	free_stack(vars.head);
-	free(vars.buffer);
-	fclose(vars.fd);
-}
-/**
- * init - initialize all variables into the struct global_t
- * @fd: - file descriptor of file opened
- * Return: No return
- */
-void init(FILE *fd)
-{
-	order = 1;
-	vars.fd = fd;
-	vars.cline = 1;
-	vars.buffer = NULL;
-	vars.stack = 1;
-}
+global_t vars;
 /**
  * main - this function evaluates the input to execute the
  * functions
@@ -34,15 +9,15 @@ void init(FILE *fd)
  */
 int main(int argc, char **argv)
 {
-	File *fd;
+	FILE *fd;
 	size_t size = 128;
 	ssize_t line_num = 0;
 	char *args[2] = {NULL, NULL};
-	void (*f)(stack_t, unsigned int);
+	void (*f)(stack_t **head, unsigned int line_number);
 
 	fd = check_open(argc, argv);
 	init(fd);
-	line_num = getline(&buffer, &size, fd);
+	line_num = getline(&vars.buffer, &size, fd);
 	while (line_num != -1)
 	{
 		args[0] = strtok(vars.buffer, " \n\t");
