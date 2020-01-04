@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <string.h>
 global_t vars;
 /**
  * main - this function evaluates the input to execute the
@@ -21,7 +20,7 @@ int main(int argc, char **argv)
 	line_num = getline(&vars.buffer, &size, fd);
 	while (line_num != -1)
 	{
-		args[0] = strtok(vars.buffer, " \n\t");
+		args[0] = _strtok(vars.buffer, " \n\t");
 		if (args[0][0] != '#' && args[0] != NULL)
 		{
 			f = get_opcode_func(args[0]);
@@ -32,7 +31,7 @@ int main(int argc, char **argv)
 				free_vars();
 				exit(EXIT_FAILURE);
 			}
-			vars.stack = strtok(NULL, " \n\t");
+			vars.stack = _strtok(NULL, " \n\t");
 			f(&vars.head, vars.cline);
 		}
 		line_num = getline(&vars.buffer, &size, fd);
