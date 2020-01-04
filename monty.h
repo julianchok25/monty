@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stddef.h>
+#include <unistd.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,19 +37,23 @@ typedef struct instruction_s
 
 /**
  * struct global_variables - all global variables to initialize
+ * @order: Keeps the order of stack
  * @fd: File wil be open
  * @cline: Counter of lines into file
  * @buffer: this pointer allocate the data of each line of the file
  * @stack: Reference to the stack will be added
- *
+ * @head: Reference the head of doubly linked list
  * Description: keeps all variables expecting for a value
  */
 typedef struct global_variables
 {
+	int order;
 	File *fd;
-	int cline;
+	unsigned int cline;
 	char *buffer;
-	int stack;
+	char *stack;
+	stack_t *head;
 } global_t;
-void (*get_opcode_func(char *s))(stack_t **stack, unsigned int line_number);
+void (*get_opcode_func(char *s))(stack_t, unsigned int);
+void free_stack(stack_t *head);
 #endif /* #ifndef MONTY_H */
