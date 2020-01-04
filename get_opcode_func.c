@@ -1,11 +1,10 @@
-# include "monty.h"
+#include "monty.h"
 
 /**
  * get_opcode_func - get the option of char input to perform the opcode
  * @s: input opcode
  * Return: a pointer to the function given the opcode or NULL if not found
  */
-
 void (*get_opcode_func(char *s))(stack_t, unsigned int)
 {
 	int i = 0;
