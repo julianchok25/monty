@@ -34,7 +34,6 @@ void stack_push(stack_t **head, unsigned int line_num)
 	else
 		add_dnodeint_end(head, number);
 }
-
 /**
  * stack_pall - this function print all values on the doubly linked list
  * @head: reference to the head of doubly linked list
