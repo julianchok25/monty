@@ -19,18 +19,12 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 		exit(EXIT_FAILURE);
 	}
 	new->n = n;
-	if (*head == NULL)
-	{
-		new->next = *head;
-		new->prev = NULL;
-		*head = new;
-		return (*head);
-	}
-	(*head)->prev = new;
-	new->next = (*head);
+	new->next = *head;
 	new->prev = NULL;
+	if (*head)
+		(*head)->prev = new;
 	*head = new;
-	return (*head);
+	return (new);
 }
 
 /**
@@ -53,20 +47,20 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 		exit(EXIT_FAILURE);
 	}
 	new->n = n;
-	if (*head == NULL)
+	if (!(*head))
 	{
 		new->next = *head;
 		new->prev = NULL;
 		*head = new;
-		return (*head);
+		return (new);
 	}
 	tmp = *head;
-	while (tmp->next != NULL)
+	while (tmp->next)
 		tmp = tmp->next;
-	new->next = tmp->next;
+	new->next = NULL;
 	new->prev = tmp;
 	tmp->next = new;
-	return (tmp->next);
+	return (new);
 }
 
 /**

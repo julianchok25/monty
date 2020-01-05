@@ -26,7 +26,7 @@ void (*get_opcode_func(char *s))(stack_t **head, unsigned int line_num)
 
 	while (stack[i].opcode)
 	{
-		if (_strcmp(stack[i].opcode, s) == 0)
+		if (strcmp(stack[i].opcode, s) == 0)
 			break;
 		i += 1;
 	}
